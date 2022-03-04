@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const connectToDB = require('./config/dbConnect')
+const authRoutes = require('./routes/auth')
 
 const startServer = () => {
     const app = express()
@@ -21,6 +22,8 @@ const startServer = () => {
             message: 'Welcome to Code For Ukraine API'
         })
     })
+
+    app.use('/api', authRoutes)
 
     app.listen(PORT, () => console.log(`App is running at ${PORT}`))
 }
