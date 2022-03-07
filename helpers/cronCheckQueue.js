@@ -1,6 +1,6 @@
 const cron = require('node-cron')
 
-const checkCheckQueue = () => {
+const cronCheckQueue = () => {
     
     cron.schedule('* * * * *', function() {
         //TODO: check queue in mongo to see if there are any tasks in queue to process
