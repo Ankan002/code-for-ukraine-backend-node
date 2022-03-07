@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "7d0054c6-a13a-428f-ad35-76df4aa0acdb",
+		"name": "CodeForUkraine - FindMe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"jtsquared\",\r\n    \"providerId\": \"jtsquaredturner.e.jonathan@gmail.com\",\r\n    \"image\": \"5lsdkjf29sddlkj2odlsk\",\r\n    \"email\": \"turner.e.jonathan@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIyMzkzZTE4Zjg1ZDhlMjI0MDU0MmY4IiwiaWF0IjoxNjQ2NDk5OTQwfQ.n812rTt5tdcaRSe-Nc5LxC02I2gXRcr8h9bbmBPRiOw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/user?=jtsquared",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "jtsquared"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "report",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"findName\": \"bobby fischer\",\r\n    \"reporterName\": \"borris spassky\",\r\n    \"providerId\": \"jtsquaredturner.e.jonathan@gmail.com\",\r\n    \"image\": \"5sldkjflk23sldkfjl\",\r\n    \"email\": \"turner.e.jonathan@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verifyFace",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIyMzkzZTE4Zjg1ZDhlMjI0MDU0MmY4IiwiaWF0IjoxNjQ2NDk5OTQwfQ.n812rTt5tdcaRSe-Nc5LxC02I2gXRcr8h9bbmBPRiOw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"faceId1\": \"12345\",\r\n    \"faceId2\": \"56789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/verifyFace",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"verifyFace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detectFace",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIyMzkzZTE4Zjg1ZDhlMjI0MDU0MmY4IiwiaWF0IjoxNjQ2NDk5OTQwfQ.n812rTt5tdcaRSe-Nc5LxC02I2gXRcr8h9bbmBPRiOw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/blue_/OneDrive/Pictures/b1.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/detectFace",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"detectFace"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

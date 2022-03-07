@@ -1,5 +1,9 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
+var mongoDbQueue = require('mongodb-queue')
+
+var db;
+var faceVerifyQueue;
 
 const connectToDB = () => {
 
@@ -7,9 +11,21 @@ const connectToDB = () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(() => console.log(`Connected to DB`))
+    .then(() => {
+        db = mongoose.connection.db;
+        faceVerifyQueue = mongoDbQueue(db, 'face-verify-queue');
+        console.log(db);
+        console.log(`Connected to DB`)
+    })
     .catch((error) => console.log(error))
-
 }
 
-module.exports = connectToDB
+const getDB = () => {
+    return db;
+}
+
+const getQueue = () => {
+    return faceVerifyQueue;
+}
+
+module.exports = { connectToDB, getDB, getQueue }
