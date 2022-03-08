@@ -83,7 +83,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"missingName\": \"bobby fischer\",\r\n    \"missingImage\": \"imamissingperson.jpg\",\r\n    \"reporterId\": \"238sdijflk2j8djl\",\r\n    \"reporterName\": \"borris spassky\",\r\n    \"reporterImage\": \"reporterimage.jpg\",\r\n    \"reporterEmail\": \"turner.e.jonathan@gmail.com\",\r\n    \"notificationToken\": \"239wjlskd2938djklsk3\"\r\n}",
+					"raw": "{\r\n    \"missingName\": \"find me\",\r\n    \"missingImage\": \"imamissingperson2.jpg\",\r\n    \"reporterId\": \"3928djlskjdl19slkd\",\r\n    \"reporterName\": \"sum wun\",\r\n    \"reporterImage\": \"reporterimage2.jpg\",\r\n    \"reporterEmail\": \"sum.wun@gmail.com\",\r\n    \"notificationToken\": \"239wjlskd2938djklsk3\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,6 +101,45 @@
 						"api",
 						"report",
 						"addReport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reportMissing",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIyMzkzZTE4Zjg1ZDhlMjI0MDU0MmY4IiwiaWF0IjoxNjQ2Nzc0NDg4fQ.MhgLJ8yP2_31ERvUkEKKhV10kjVhqBjgu1lddo-rnPM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"missingName\": \"bobby fischer\",\r\n    \"missingImage\": \"imamissingperson.jpg\",\r\n    \"reporterId\": \"238sdijflk2j8djl\",\r\n    \"reporterName\": \"borris spassky\",\r\n    \"reporterImage\": \"reporterimage.jpg\",\r\n    \"reporterEmail\": \"turner.e.jonathan@gmail.com\",\r\n    \"notificationToken\": \"239wjlskd2938djklsk3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/report/reportMissing",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"report",
+						"reportMissing"
 					]
 				}
 			},
