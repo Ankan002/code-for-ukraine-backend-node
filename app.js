@@ -7,7 +7,7 @@ const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
 const reportRoutes = require('./routes/report')
 const azureFaceRoutes = require('./routes/azureFace')
-const cronCheckQueue = require('./helpers/cronCheckQueue')
+const { cronCheckQueue } = require('./helpers/queueHelper')
 
 const startServer = () => {
     const app = express()
