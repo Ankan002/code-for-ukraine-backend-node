@@ -8,7 +8,6 @@ const userRoutes = require('./routes/user')
 const reportRoutes = require('./routes/report')
 const azureFaceRoutes = require('./routes/azureFace')
 const cronCheckQueue = require('./helpers/cronCheckQueue')
-const bodyParser = require('body-parser');
 
 const startServer = () => {
     const app = express()
@@ -18,7 +17,6 @@ const startServer = () => {
 
     app.use(cors())
     app.use(express.json())
-    app.use(bodyParser.raw({type: "application/octet-stream", limit: '50mb'}))
     app.use(fileUpload({
         useTempFiles: true
     }))

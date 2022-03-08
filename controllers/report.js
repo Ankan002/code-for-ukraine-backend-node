@@ -2,6 +2,7 @@ require('dotenv').config()
 const {validationResult} = require('express-validator')
 const pushToQueue = require('../helpers/pushToQueue.js');
 const processQueue = require('../helpers/processQueue');
+const { detectFace } = require('./azureFace.js');
 
 exports.report = async(req, res)=> {
 
@@ -22,6 +23,7 @@ exports.report = async(req, res)=> {
         //convert image from active report to byte array
         //convert all images retrieved from the database to byte arrays
         //call azure face detect api on all images to obtain faceIds
+        const faceId1 = detectFace()
         //push images to face verify queue in mongodb then immediately attempt to process task
         pushToQueue(providerId, )
         processQueue()
