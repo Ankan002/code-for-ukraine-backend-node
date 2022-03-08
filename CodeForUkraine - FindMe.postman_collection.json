@@ -109,7 +109,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"faceId1\": \"12345\",\r\n    \"faceId2\": \"56789\"\r\n}",
+					"raw": "{\r\n    \"faceId1\": \"95252bcd-f789-49ec-8e5f-06dd13a6a74e\",\r\n    \"faceId2\": \"85d5d8f5-3f78-4a68-a105-49232bbbf999\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,12 +133,15 @@
 		},
 		{
 			"name": "detectFace",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIyMzkzZTE4Zjg1ZDhlMjI0MDU0MmY4IiwiaWF0IjoxNjQ2NDk5OTQwfQ.n812rTt5tdcaRSe-Nc5LxC02I2gXRcr8h9bbmBPRiOw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIyMzkzZTE4Zjg1ZDhlMjI0MDU0MmY4IiwiaWF0IjoxNjQ2NzQ4NjU4fQ.znaZcj1IHTz7cPOqbxDmN253T9rEzLsxTOBSECEuwPs",
 						"type": "text"
 					}
 				],
@@ -147,8 +150,9 @@
 					"formdata": [
 						{
 							"key": "image",
+							"contentType": "",
 							"type": "file",
-							"src": "/C:/Users/blue_/OneDrive/Pictures/b1.jpg"
+							"src": "/C:/Users/blue_/Desktop/images/b1.jpg"
 						}
 					]
 				},
