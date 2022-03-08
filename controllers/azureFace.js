@@ -5,10 +5,17 @@ const Face = require('@azure/cognitiveservices-face')
 const processQueue = require('../helpers/processQueue')
 
 const key = process.env.AZURE_FACE_VERIFY_API_KEY
-const detectEndpoint = process.env.AZURE_FACE_DETECT_URL
+const credentials = new msRest.ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key}});
+const endpoint = process.env.AZURE_FACE_ENDPOINT
+const client = new Face.FaceClient(credentials, endpoint);
 
 //call azure face detect api. This returns a faceId which is required for the face verify api call
 exports.detectFace = async(req, res) => {
+
+    console.log('req.file :' + req.file)
+    //console.log('req.file.buffer :' + req.file.buffer)
+
+    console.log(process.env.NODE_ENV)
 
     const errors = validationResult(req)
 
@@ -19,13 +26,10 @@ exports.detectFace = async(req, res) => {
         })
     }
 
-    const imageByteArr = req.file;
-    console.log(imageByteArr)
+    const imageByteArr = req.files['image'].data.buffer;
+    console.log("image byte arr: " + imageByteArr)
     
     try{
-        const credentials = new msRest.ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key}});
-        const client = new Face.FaceClient(credentials, endpoint);
-
         //TODO: currently we are storing image blobs directly in mongodb so will probably need to change this to client.face.detectWithStream instead and then convert images to byte array streams within this request
         //let results = await client.face.detectWithUrl({ url: imageUrl })
         let results = await client.face.detectWithStream(imageByteArr)
@@ -61,9 +65,11 @@ exports.verifyFace = async(req, res) => {
 
 
     try{
+        const key = process.env.AZURE_FACE_VERIFY_API_KEY
         const credentials = new msRest.ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key}});
+        const endpoint = process.env.AZURE_FACE_ENDPOINT;
         const client = new Face.FaceClient(credentials, endpoint);
-
+        console.log(endpoint);
         let results = await client.face.verifyFaceToFace({ faceId1: faceId1, faceId2: faceId2 });
         console.log(results);
 
