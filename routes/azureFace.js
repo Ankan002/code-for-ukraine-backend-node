@@ -4,10 +4,11 @@ const {body, check} = require('express-validator')
 const {fetchUser} = require('../middlewares/fetchUser')
 const {detectFace, verifyFace} = require('../controllers/azureFace')
 const req = require('express/lib/request')
-const multer = require('multer')
-const upload = multer()
+const multer = require('multer');
+const inMemoryStorage = multer.memoryStorage();
+const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
 
-router.post('/detectFace', [fetchUser, upload.single('image')], [
+router.get('/detectFace', [fetchUser, uploadStrategy], [
     check('image')
         .notEmpty().withMessage('Image is required')
         .custom((value, { req }) => {

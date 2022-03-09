@@ -14,7 +14,6 @@ const connectToDB = () => {
     .then(() => {
         db = mongoose.connection.db;
         faceVerifyQueue = mongoDbQueue(db, 'face-verify-queue');
-        console.log(db);
         console.log(`Connected to DB`)
     })
     .catch((error) => console.log(error))
